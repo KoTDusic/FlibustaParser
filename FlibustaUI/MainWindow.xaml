@@ -1,0 +1,28 @@
+﻿<Window x:Class="FlibustaUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:flibustaUi="clr-namespace:FlibustaUI"
+        xmlns:images="clr-namespace:FlibustaUI.Images"
+        xmlns:uiComponents="clr-namespace:UiComponents;assembly=CommonInformation"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <flibustaUi:MainVindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CommonInformation;component/UiComponents/LoadingDecorator/LoadingDecorator.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <uiComponents:LoadingDecorator HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                       AnimationImage="{Binding Source={x:Static images:Images.LoadingImage}}" 
+                                       IsContentLoading="{Binding IsLoaded}"/>
+    </Grid>
+</Window>
